@@ -4,6 +4,21 @@ import ephem
 
 dir='/Users/hsinyuc/research/'
 
+def rot_overtime(event_time):
+    az = float(ephem.degrees('0'))
+    alt = float(ephem.degrees('90'))
+    obs = ephem.Observer()
+    obs.pressure = 0
+    obs.lat, obs.lon = '0', '0'
+    obs.date = event_time
+
+    ra_rot, dec_rot = obs.radec_of(az,alt)
+    
+    return ra_rot
+
+
+
+
 time = ['1899-12-31 12:00:00']
 t_ephem_start = Time(time, format='iso', scale='utc')
 
